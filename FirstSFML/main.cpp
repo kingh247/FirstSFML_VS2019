@@ -7,9 +7,12 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");    // render a 200x200 Window
-    sf::CircleShape shape(100.f);                                       // create a circle object called shape
-    shape.setFillColor(sf::Color::Green);                               // colour shape Green
+    sf::RenderWindow window(sf::VideoMode(400, 400), "SFML Hello!");    // render a 200x200 Window
+    sf::RectangleShape shape(sf::Vector2f(100, 100));                   // create a circle object called shape
+    shape.setFillColor(sf::Color::Red);                                 // colour shape Green
+    shape.setOrigin(50,50);
+    shape.setPosition(200, 200);
+    shape.setRotation(45);
 
     while (window.isOpen())                                             // This is the Windows application loop - infinite loop until closed
     {
@@ -20,8 +23,8 @@ int main()
                 window.close();
         }
 
-        window.clear();                                                 // Clear render buffer
-        window.draw(shape);                                             // Draw the shape to the buffer (in this case at default position)
+        window.clear(sf::Color::Blue);                                  // Clear render buffer      
+        window.draw(shape);                                             // Draw the shape to the buffer (in this case at default position)       
         window.display();                                               // Display the graphics from the buffer to the display
     }
 
