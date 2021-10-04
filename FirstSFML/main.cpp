@@ -1,8 +1,9 @@
 /* 
 * A basic SFML application to build upon - Darryl Charles
 * SFML Documentation https://www.sfml-dev.org/documentation/2.5.1/ 
+* Set up your own VS2019 project https://www.youtube.com/watch?v=lFzpkvrscs4
 */
-#include <SFML/Graphics.hpp>
+#include <SFML/Graphics.hpp>                                            // sf namespace
 
 int main()
 {
@@ -12,7 +13,7 @@ int main()
 
     while (window.isOpen())                                             // This is the Windows application loop - infinite loop until closed
     {
-        sf::Event event;                                                // Windows is event driven
+        sf::Event event;                                                // Windows is event driven - this code closes the Window properly
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
