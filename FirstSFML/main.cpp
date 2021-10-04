@@ -1,29 +1,44 @@
-/* 
-* A basic SFML application to build upon - Darryl Charles
-* SFML Documentation https://www.sfml-dev.org/documentation/2.5.1/ 
-* Set up your own VS2019 project https://www.youtube.com/watch?v=lFzpkvrscs4
-*/
-#include <SFML/Graphics.hpp>                                            // sf namespace
-
+#include <SFML/Audio.hpp>
+#include <SFML/Graphics.hpp>
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");    // render a 200x200 Window
-    sf::CircleShape shape(100.f);                                       // create a circle object called shape
-    shape.setFillColor(sf::Color::Green);                               // colour shape Green
-
-    while (window.isOpen())                                             // This is the Windows application loop - infinite loop until closed
+    // Create the main window
+    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
+    // Load a sprite to display
+    sf::Texture texture;
+    if (!texture.loadFromFile(".\\images\\cpp.png"))
+        return EXIT_FAILURE;
+    sf::Sprite sprite(texture);
+    // Create a graphical text to display
+    sf::Font font;
+    if (!font.loadFromFile(".\\fonts\\arial.ttf"))
+        return EXIT_FAILURE;
+    sf::Text text("Hello SFML", font, 50);
+    // Load a music to play
+    sf::Music music;
+    if (!music.openFromFile(".\\audio\\achievement.ogg"))
+        return EXIT_FAILURE;
+    // Play the music
+    music.play();
+    // Start the game loop
+    while (window.isOpen())
     {
-        sf::Event event;                                                // Windows is event driven - this code closes the Window properly
+        // Process events
+        sf::Event event;
         while (window.pollEvent(event))
         {
+            // Close window: exit
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-
-        window.clear();                                                 // Clear render buffer
-        window.draw(shape);                                             // Draw the shape to the buffer (in this case at default position)
-        window.display();                                               // Display the graphics from the buffer to the display
+        // Clear screen
+        window.clear();
+        // Draw the sprite
+        window.draw(sprite);
+        // Draw the string
+        window.draw(text);
+        // Update the window
+        window.display();
     }
-
-    return 0;
+    return EXIT_SUCCESS;
 }
