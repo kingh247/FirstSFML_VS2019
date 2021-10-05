@@ -1,4 +1,5 @@
 /* 
+* john kingh
 * A basic SFML application to build upon - Darryl Charles
 * SFML Documentation https://www.sfml-dev.org/documentation/2.5.1/ 
 * Set up your own VS2019 project https://www.youtube.com/watch?v=lFzpkvrscs4
